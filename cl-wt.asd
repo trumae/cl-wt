@@ -19,11 +19,14 @@
   :depends-on (:hunchentoot
 	       :ironclad
 	       :cl-who
+	       :uuid
 	       :css-lite)
   :components ((:module "src"
 			:components			
 			((:file "package")
-			 (:file "WString"))))
+			 (:file "utils"
+			 (:file "WString")
+			 (:file "WObject"))))
   :description "Clone of C++ library Wt"
   :long-description
   #.(with-open-file (stream (merge-pathnames
