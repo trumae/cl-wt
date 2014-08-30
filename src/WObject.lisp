@@ -1,6 +1,5 @@
 (in-package :cl-wt)
 
-
 (defclass WOBJECT ()
   ((id :accessor id
        :initform (uuid:make-v4-uuid)

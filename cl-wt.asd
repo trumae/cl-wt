@@ -24,10 +24,13 @@
   :components ((:module "src"
 			:components			
 			((:file "package")
-			 (:file "utils"
+			 (:file "utils")
 			 (:file "WString")
-			 (:file "WObject"))))
-  :description "Clone of C++ library Wt"
+			 (:file "WObject")
+			 (:file "WApplication")
+			 (:file "WWidget")
+			 (:file "WContainerWidget"))))
+  :description "Web app library inspired in C++ library Wt"
   :long-description
   #.(with-open-file (stream (merge-pathnames
                              #p"README.markdown"

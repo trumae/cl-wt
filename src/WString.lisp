@@ -1,6 +1,5 @@
 (in-package :cl-wt)
 
-
 (defclass WSTRING ()
   ((value :accessor value
 	 :initform ""
