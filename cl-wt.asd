@@ -16,10 +16,14 @@
   :version "0.1"
   :author "vvmaciel"
   :license "LGPL"
-  :depends-on ()
+  :depends-on (:hunchentoot
+	       :ironclad
+	       :cl-who
+	       :css-lite)
   :components ((:module "src"
-                :components
-                ((:file "cl-wt"))))
+			:components			
+			((:file "package")
+			 (:file "WString"))))
   :description "Clone of C++ library Wt"
   :long-description
   #.(with-open-file (stream (merge-pathnames
