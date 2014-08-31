@@ -196,7 +196,8 @@
    ;;(defmethod is-visible
    ;;(defmethod add-style-class
    ;;(defmethod remove-style-class
-   ;;(defmethod refresh
+(defmethod refresh ((widget WWIDGET))
+  "")
    ;;(defmethod jsref
    ;;(defmethod load
    ;;(defmethod is-load

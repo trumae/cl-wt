@@ -29,7 +29,11 @@
 			 (:file "WObject")
 			 (:file "WApplication")
 			 (:file "WWidget")
-			 (:file "WContainerWidget"))))
+			 (:file "WContainerWidget")
+			 (:file "AdapterHunchentoot")))
+	       (:module "examples"
+			:components
+			((:file "helloworld"))))
   :description "Web app library inspired in C++ library Wt"
   :long-description
   #.(with-open-file (stream (merge-pathnames

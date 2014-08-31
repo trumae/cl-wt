@@ -11,11 +11,18 @@
 distance between the widget children and the border")))
 
 (defmethod add-widget ((cont WCONTAINERWIDGET) (w WWIDGET))
-  nil)
+  (add-child cont w))
 
 (defmethod remove-widget ((cont WCONTAINERWIDGET) (w WWIDGET))
-  nil)
+  (remove-child cont w))
 
 (defmethod clear ((cont WCONTAINERWIDGET))
-  nil)
+  (setf (children cont) '()))
 
+(defmethod refresh ((cont WCONTAINERWIDGET))
+  (concatenate 'string
+	       "<div id='"
+	       (write-to-string (id cont))
+	       "'>"
+	       
+	       "</div>"))

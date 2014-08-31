@@ -11,14 +11,13 @@
 	   :initform nil
 	   :initarg :parent
 	   :documentation "parent of object")
-   (childrens :accessor childrens
+   (children :accessor children
 	      :initform '()
-	      :documentation "childrens of this object")))
+	      :documentation "children of this object")))
 
 (defmethod add-child ((obj WOBJECT) (child WOBJECT))
-  (setf (childrens obj) (pushnew child (childrens obj))))
+  (setf (children obj) (pushnew child (children obj))))
 
 (defmethod remove-child ((obj WOBJECT) (child WOBJECT))
-  (setf (childrens obj) (remove child (childrens obj))))
-
+  (setf (children obj) (remove child (children obj))))
 
