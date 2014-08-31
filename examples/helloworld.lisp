@@ -6,7 +6,10 @@
   ((title :initform "Hello World!")))
 
 (defmethod init-wapplication ((wapp WAPPLICATION))
-  (setf (app-root wapp) (make-instance 'WCONTAINERWIDGET)))
+  (let ((r1 (make-instance 'WCONTAINERWIDGET))
+	(r2 (make-instance 'WCONTAINERWIDGET)))
+    (add-widget r1 r2)
+    (setf (app-root wapp) r1)))
 
 (setq hunchentoot:*dispatch-table*
       (list

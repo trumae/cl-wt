@@ -16,8 +16,10 @@
 	      :documentation "children of this object")))
 
 (defmethod add-child ((obj WOBJECT) (child WOBJECT))
+  (setf (parent child) obj)
   (setf (children obj) (pushnew child (children obj))))
 
 (defmethod remove-child ((obj WOBJECT) (child WOBJECT))
+  (setf (parent child) nil)
   (setf (children obj) (remove child (children obj))))
 

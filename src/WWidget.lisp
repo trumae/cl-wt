@@ -208,5 +208,6 @@
    ;;(defmethod disable
    ;;(defmethod enableAjax
    ;;(defmethod propagate-set-enable
-   ;;(defmethod render
+(defmethod render ((widget WWIDGET))
+  "")
    

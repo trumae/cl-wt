@@ -19,10 +19,17 @@ distance between the widget children and the border")))
 (defmethod clear ((cont WCONTAINERWIDGET))
   (setf (children cont) '()))
 
-(defmethod refresh ((cont WCONTAINERWIDGET))
+(defun render-list (l)
+  (if (null l)
+      ""
+      (concatenate 'string
+		   (render (car l))
+		   (render-list (cdr l)))))
+
+(defmethod render ((cont WCONTAINERWIDGET))
   (concatenate 'string
 	       "<div id='"
 	       (write-to-string (id cont))
 	       "'>"
-	       
+	       (render-list (children cont))
 	       "</div>"))

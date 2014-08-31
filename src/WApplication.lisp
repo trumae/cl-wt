@@ -23,7 +23,7 @@
 (defmethod init-wapplication ((app WAPPLICATION))
   (setf (app-root app) (make-instance 'WCONTAINERWIDGET)))
 
-(defmethod refresh ((app WAPPLICATION))
+(defmethod render ((app WAPPLICATION))
   (concatenate 'string
 	       "<!DOCTYPE html>"
 	       "<html>"
@@ -32,5 +32,5 @@
 	       "<meta name='viewport' content='width=device-width, initial-scale=1'>"
 	       "<title>" (title app)  "</title>"
 	       "</head><body>"
-	       (refresh (app-root app))
+	       (render (app-root app))
 	       "</body></html>"))

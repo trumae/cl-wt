@@ -15,7 +15,7 @@
 		(make-instance *app-type*))
 	  (init-wapplication (hunchentoot:session-value 'app))))
     (let ((app (hunchentoot:session-value 'app)))
-      (refresh app))))
+      (render app))))
     
     
     
