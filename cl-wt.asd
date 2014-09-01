@@ -31,6 +31,7 @@
 			 (:file "WApplication")
 			 (:file "WWidget")
 			 (:file "WContainerWidget")
+			 (:file "WText")
 			 (:file "AdapterHunchentoot")))
 	       (:module "examples"
 			:components
