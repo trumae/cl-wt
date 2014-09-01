@@ -20,6 +20,7 @@
 	       :ironclad
 	       :cl-who
 	       :uuid
+	       :sanitize
 	       :iterate
 	       :css-lite)
   :components ((:module "src"

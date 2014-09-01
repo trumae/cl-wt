@@ -7,8 +7,12 @@
 
 (defmethod init-wapplication ((wapp WAPPLICATION))
   (let ((r1 (make-instance 'WCONTAINERWIDGET))
-	(r2 (make-instance 'WCONTAINERWIDGET)))
+	(r2 (make-instance 'WCONTAINERWIDGET))
+	(t1 (make-instance 'WTEXT :text "Teste de WText 1 - em R1"))
+	(t2 (make-instance 'WTEXT :text "Teste de WText 2 - em R2")))
     (add-widget r1 r2)
+    (add-widget r1 t1)
+    (add-widget r2 t2)
     (setf (app-root wapp) r1)))
 
 (setq hunchentoot:*dispatch-table*

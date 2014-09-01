@@ -208,6 +208,22 @@
    ;;(defmethod disable
    ;;(defmethod enableAjax
    ;;(defmethod propagate-set-enable
-(defmethod render ((widget WWIDGET))
+
+(defmethod render-begin ((widget WWIDGET))
+  (concatenate 'string
+  	       "<div id='"
+	       (write-to-string (id widget))
+	       "'>"))
+
+(defmethod render-end ((widget WWIDGET))
+  "</div>")
+
+(defmethod render-body ((widget WWIDGET))
   "")
-   
+
+(defmethod render ((widget WWIDGET))
+  (concatenate 'string
+	       (render-begin widget)
+	       (render-body widget)
+	       (render-end widget)))
+	       

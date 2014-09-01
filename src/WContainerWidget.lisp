@@ -26,10 +26,6 @@ distance between the widget children and the border")))
 		   (render (car l))
 		   (render-list (cdr l)))))
 
-(defmethod render ((cont WCONTAINERWIDGET))
-  (concatenate 'string
-	       "<div id='"
-	       (write-to-string (id cont))
-	       "'>"
-	       (render-list (children cont))
-	       "</div>"))
+(defmethod render-body ((cont WCONTAINERWIDGET))
+  (render-list (children cont)))
+
