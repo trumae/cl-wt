@@ -8,10 +8,12 @@
 (defmethod init-wapplication ((wapp WAPPLICATION))
   (let ((r1 (make-instance 'WCONTAINERWIDGET))
 	(r2 (make-instance 'WCONTAINERWIDGET))
+	(btn1 (make-instance 'WPUSHBUTTON :text "Push me!"))
 	(t1 (make-instance 'WTEXT :text "Teste de WText 1 - em R1"))
 	(t2 (make-instance 'WTEXT :text "Teste de WText 2 - em R2")))
     (add-widget r1 r2)
     (add-widget r1 t1)
+    (add-widget r1 btn1)
     (add-widget r2 t2)
     (setf (app-root wapp) r1)))
 

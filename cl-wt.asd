@@ -33,6 +33,7 @@
 			 (:file "WWidget")
 			 (:file "WContainerWidget")
 			 (:file "WText")
+			 (:file "WPushButton")
 			 (:file "AdapterHunchentoot")))
 	       (:module "examples"
 			:components
