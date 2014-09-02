@@ -29,3 +29,14 @@ distance between the widget children and the border")))
 (defmethod render-body ((cont WCONTAINERWIDGET))
   (render-list (children cont)))
 
+(defun script-list (l)
+  (if (null l)
+      ""
+      (concatenate 'string
+		   (script (car l))
+		   (script-list (cdr l)))))
+
+(defmethod script ((cont WCONTAINERWIDGET))
+  (script-list (children cont)))
+
+

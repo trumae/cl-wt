@@ -21,6 +21,7 @@
 	       :cl-who
 	       :uuid
 	       :sanitize
+	       :parenscript
 	       :iterate
 	       :css-lite)
   :components ((:module "src"

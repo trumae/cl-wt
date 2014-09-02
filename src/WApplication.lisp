@@ -23,6 +23,13 @@
 (defmethod init-wapplication ((app WAPPLICATION))
   (setf (app-root app) (make-instance 'WCONTAINERWIDGET)))
 
+(defmethod script ((app WAPPLICATION))
+  (concatenate 'string
+	       "<script language='javascript'>"
+	       (ps:ps (defun send(ev) 1))
+	       (script (app-root app))
+	       "</script>"))
+	       
 (defmethod render ((app WAPPLICATION))
   (concatenate 'string
 	       "<!DOCTYPE html>"
@@ -31,8 +38,8 @@
 	       "<meta charset='utf-8'>"
 	       "<meta name='viewport' content='width=device-width, initial-scale=1'>"
 	       "<title>" (title app)  "</title>"
-	       "<script src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>"
 	       "</head><body>"
 	       (render (app-root app))
-	       "</body>"	       
+	       "</body>"
+	       (script app)
 	       "</html>"))

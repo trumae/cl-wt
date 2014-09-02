@@ -186,18 +186,22 @@
 		    :documentation "Attribute value of this widget")
    (tab-index :accessor tab-index
 	      :initarg :tab-index
-	      :documentation "Tab index of this widget")))
-   
-   
+	      :documentation "Tab index of this widget")
+   (clicked :accessor clicked
+	    :initarg :clicked
+	    :initform nil
+	    :documentation "Handle event of widget clicked")))   
    
    ;;(defmethod resize
    ;;(defmethod position-at
    ;;(defmethod set-all-margins
    ;;(defmethod is-visible
    ;;(defmethod add-style-class
-   ;;(defmethod remove-style-class
+;;(defmethod remove-style-class
+
 (defmethod refresh ((widget WWIDGET))
   "")
+
    ;;(defmethod jsref
    ;;(defmethod load
    ;;(defmethod is-load
@@ -208,6 +212,14 @@
    ;;(defmethod disable
    ;;(defmethod enableAjax
    ;;(defmethod propagate-set-enable
+
+(defmethod script ((widget WWIDGET))
+  (concatenate 'string
+	       (if (clicked widget)
+		   (concatenate 'string
+				"document.getElementById('"
+				(write-to-string (id widget))
+				"').onclick = function() { alert('Teste');};"))))
 
 (defmethod render-begin ((widget WWIDGET))
   (concatenate 'string
