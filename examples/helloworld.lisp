@@ -11,6 +11,8 @@
 	(btn1 (make-instance 'WPUSHBUTTON :text "Push me!" :clicked (lambda()(format t "clicked"))))
 	(t1 (make-instance 'WTEXT :text "Teste de WText 1 - em R1"))
 	(t2 (make-instance 'WTEXT :text "Teste de WText 2 - em R2")))
+    (setf (clicked btn1) (lambda ()
+			   (setf (text t1) (format nil "Teste ~a" (random 1000)))))
     (add-widget r1 r2)
     (add-widget r1 t1)
     (add-widget r1 btn1)

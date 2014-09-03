@@ -39,4 +39,12 @@ distance between the widget children and the border")))
 (defmethod script ((cont WCONTAINERWIDGET))
   (script-list (children cont)))
 
+(defun process-event-list(l origin event data)
+  (if (null l)
+      nil
+      (progn
+	(process-event (car l) origin event data)
+	(process-event-list (cdr l) origin event data))))
 
+(defmethod process-event ((cont WCONTAINERWIDGET) origin event data)
+  (process-event-list (children cont)  origin event data ))

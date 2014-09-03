@@ -24,25 +24,48 @@
   (setf (app-root app) (make-instance 'WCONTAINERWIDGET)))
 
 (defmethod script ((app WAPPLICATION))
-  (let ((uuid (uuid:make-v4-uuid)))
     (concatenate 'string
 		 "<script language='javascript'>"
-		 "function send() {"
-		 " document.location = '/?ttt=" (write-to-string uuid) "';"
+		 
+		 "function stopPropagation(event) {"
+		 "  if(event.preventDefault) {"
+		 "    event.stopPropagation();"
+		 "  } else {"
+		 "    event.cancelBubble = true;"
+		 "  };"
 		 "}"
+		 (concatenate 'string				  
+			      "function send(origin, event, data) {"
+			      "  document.getElementById('wt-send-form').innerHTML = "
+			      "    \"<input name='origin' value='\" + origin + \"' />\" + "
+			      "    \"<input name='event' value='\" + event + \"' />\" + "
+			      "    \"<input name='data' value='\" + data + \"' />\";"
+			      "  document.getElementById('wt-send-form').submit();"
+			      "}")
+		 
 		 (script (app-root app))
-		 "</script>")))
-	       
+		 "</script>"))
+
+(defmethod process-event ((app WAPPLICATION) origin event data )
+  (process-event (app-root app) origin event data))
+
 (defmethod render ((app WAPPLICATION))
-  (concatenate 'string
-	       "<!DOCTYPE html>"
-	       "<html>"
-	       "<head>"
-	       "<meta charset='utf-8'>"
-	       "<meta name='viewport' content='width=device-width, initial-scale=1'>"
-	       "<title>" (title app)  "</title>"
-	       "</head><body>"
-	       (render (app-root app))
-	       "</body>"
-	       (script app)
-	       "</html>"))
+  (let ((uuid (uuid:make-v4-uuid)))
+    (concatenate 'string
+		 "<!DOCTYPE html>"
+		 "<html>"
+		 "<head>"
+		 "<meta charset='utf-8'>"
+		 "<meta name='viewport' content='width=device-width, initial-scale=1'>"
+		 "<title>" (title app)  "</title>"
+		 "</head><body>"
+		 (render (app-root app))
+
+		 "<form style='display: none;' id='wt-send-form' action='/?t="
+		 (write-to-string uuid)
+		 "' method='POST'></form>"
+
+		 "</body>"
+		 (script app)
+		 "</html>")))
+  
