@@ -18,8 +18,7 @@
       (progn
 	(process-event app
 		       (hunchentoot:post-parameter "origin")
-		       (hunchentoot:post-parameter "event")
-		       (hunchentoot:post-parameter "data"))
+		       (hunchentoot:post-parameter "event"))
 	(render app)))))
     
     

@@ -213,11 +213,10 @@
 ;;(defmethod enableAjax
 ;;(defmethod propagate-set-enable
 
-(defmethod process-event ((widget WWIDGET) origin event data)
-  ;; event trigger
-  (if (equal origin (id widget))
+(defmethod process-event ((widget WWIDGET) origin event)
+  (if (equal origin (write-to-string (id widget)))
       (progn
-	(if (equal event "clicked")
+	(if (string-equal event "clicked")
 	    (if (clicked widget)
 		(apply (clicked widget) '()))))))
 
@@ -230,7 +229,7 @@
 				(write-to-string (id widget))
 				"').onclick = function(evt) { stopPropagation(evt); send('"
 				(write-to-string (id widget))
-				"', 'clicked', '{}'); };"))))
+				"', 'clicked'); };"))))
 
 (defmethod render-begin ((widget WWIDGET))
   (concatenate 'string

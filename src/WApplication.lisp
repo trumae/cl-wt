@@ -34,20 +34,24 @@
 		 "    event.cancelBubble = true;"
 		 "  };"
 		 "}"
+		 "function getData() {"
+		 "  var l = document.querySelectorAll('input');"
+		 "  return '';"
+		 "}"
 		 (concatenate 'string				  
-			      "function send(origin, event, data) {"
+			      "function send(origin, event) {"
 			      "  document.getElementById('wt-send-form').innerHTML = "
 			      "    \"<input name='origin' value='\" + origin + \"' />\" + "
 			      "    \"<input name='event' value='\" + event + \"' />\" + "
-			      "    \"<input name='data' value='\" + data + \"' />\";"
+			      "    getData();"
 			      "  document.getElementById('wt-send-form').submit();"
 			      "}")
 		 
 		 (script (app-root app))
 		 "</script>"))
 
-(defmethod process-event ((app WAPPLICATION) origin event data )
-  (process-event (app-root app) origin event data))
+(defmethod process-event ((app WAPPLICATION) origin event)
+  (process-event (app-root app) origin event))
 
 (defmethod render ((app WAPPLICATION))
   (let ((uuid (uuid:make-v4-uuid)))
