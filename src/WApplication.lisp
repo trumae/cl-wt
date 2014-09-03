@@ -24,11 +24,14 @@
   (setf (app-root app) (make-instance 'WCONTAINERWIDGET)))
 
 (defmethod script ((app WAPPLICATION))
-  (concatenate 'string
-	       "<script language='javascript'>"
-	       (ps:ps (defun send(ev) 1))
-	       (script (app-root app))
-	       "</script>"))
+  (let ((uuid (uuid:make-v4-uuid)))
+    (concatenate 'string
+		 "<script language='javascript'>"
+		 "function send() {"
+		 " document.location = '/?ttt=" (write-to-string uuid) "';"
+		 "}"
+		 (script (app-root app))
+		 "</script>")))
 	       
 (defmethod render ((app WAPPLICATION))
   (concatenate 'string

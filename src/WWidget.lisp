@@ -219,7 +219,7 @@
 		   (concatenate 'string
 				"document.getElementById('"
 				(write-to-string (id widget))
-				"').onclick = function() { alert('Teste');};"))))
+				"').onclick = function() { send(); };"))))
 
 (defmethod render-begin ((widget WWIDGET))
   (concatenate 'string
