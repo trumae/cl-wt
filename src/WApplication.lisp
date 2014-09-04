@@ -36,7 +36,11 @@
 		 "}"
 		 "function getData() {"
 		 "  var l = document.querySelectorAll('input');"
-		 "  return '';"
+		 "  var text = '';"
+		 "  for(i = 0; i < l.length; i++) {"
+		 "    text += '<input name=\"' + l[i].name + '\" value=\"' + l[i].value + '\"/>'; "
+		 "  }"
+		 "  return text;"
 		 "}"
 		 (concatenate 'string				  
 			      "function send(origin, event) {"
@@ -50,6 +54,9 @@
 		 (script (app-root app))
 		 "</script>"))
 
+(defmethod process-data ((app WAPPLICATION))
+  (process-data (app-root app)))
+    
 (defmethod process-event ((app WAPPLICATION) origin event)
   (process-event (app-root app) origin event))
 

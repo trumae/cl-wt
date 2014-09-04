@@ -213,6 +213,9 @@
 ;;(defmethod enableAjax
 ;;(defmethod propagate-set-enable
 
+(defmethod process-data ((widget WWIDGET))
+  nil)
+
 (defmethod process-event ((widget WWIDGET) origin event)
   (if (equal origin (write-to-string (id widget)))
       (progn

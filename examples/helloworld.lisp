@@ -9,6 +9,7 @@
   (let ((r1 (make-instance 'WCONTAINERWIDGET))
 	(r2 (make-instance 'WCONTAINERWIDGET))
 	(btn1 (make-instance 'WPUSHBUTTON :text "Push me!" :clicked (lambda()(format t "clicked"))))
+	(input1 (make-instance 'WINPUTLINE))
 	(t1 (make-instance 'WTEXT :text "Teste de WText 1 - em R1"))
 	(t2 (make-instance 'WTEXT :text "Teste de WText 2 - em R2")))
     (setf (clicked btn1) (lambda ()
@@ -18,6 +19,7 @@
     (add-widget r1 t1)
     (add-widget r1 btn1)
     (add-widget r2 t2)
+    (add-widget r2 input1)
     (setf (app-root wapp) r1)))
 
 (setq hunchentoot:*dispatch-table*

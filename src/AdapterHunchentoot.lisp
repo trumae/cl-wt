@@ -16,6 +16,7 @@
 	  (init-wapplication (hunchentoot:session-value 'app))))
     (let ((app (hunchentoot:session-value 'app)))
       (progn
+	(process-data app)
 	(process-event app
 		       (hunchentoot:post-parameter "origin")
 		       (hunchentoot:post-parameter "event"))
