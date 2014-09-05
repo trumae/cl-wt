@@ -38,7 +38,8 @@
 			 (:file "AdapterHunchentoot")			 
 			 (:module "jqm"
 				  :components
-				  ((:file "WApplicationJQM")))))
+				  ((:file "WApplicationJQM")
+				   (:file "WPageJQM")))))
 	       (:module "examples"
 			:components
 			((:file "helloworld")

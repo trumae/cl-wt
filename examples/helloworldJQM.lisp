@@ -6,8 +6,8 @@
   ((title :initform "Hello World JQM!")))
 
 (defmethod init-wapplication ((wapp app-helloworldjqm))
-  (let ((r1 (make-instance 'WCONTAINERWIDGET))
-	(btn1 (make-instance 'WPUSHBUTTON :text "Push me!" :clicked (lambda()(format t "clicked"))))
+  (let* ((r1 (make-instance 'WPAGEJQM :title "HelloWorldJQM"))
+	(btn1 (make-instance 'WPUSHBUTTON :text "Push me!"))
 	(input1 (make-instance 'WINPUTLINE))
 	(t1 (make-instance 'WTEXT :text "Nome"))
 	(t2 (make-instance 'WTEXT :text "")))
