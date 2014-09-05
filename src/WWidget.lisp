@@ -74,8 +74,21 @@
   (setf (border-centerx decoration) border)
   (setf (border-centery decoration) border))
 
-(defclass WWIDGET (WOBJECT)
-  ((position-scheme :accessor position-scheme
+(defclass WWIDGET ()
+  ((id :accessor id
+       :initform (uuid:make-v4-uuid)
+       :documentation "unique identifier for this object")
+   (name :accessor name
+	 :initarg :name
+	 :documentation "object name")
+   (parent :accessor parent
+	   :initform nil
+	   :initarg :parent
+	   :documentation "parent of object")
+   (children :accessor children
+	     :initform '()
+	     :documentation "children of this object")
+   (position-scheme :accessor position-scheme
 		    :initarg :position-scheme
 		    :documentation "specify a layout mechanism for this widget")
    (offset :accessor offset
@@ -135,23 +148,23 @@
 		       :documentation
 		       "Sides that should be cleared of float centery")
    (margin-side-top :accessor margin-side-top
-		   :initarg :margin-side-top
-		   :documentation "CSS margin top")
+		    :initarg :margin-side-top
+		    :documentation "CSS margin top")
    (margin-side-bottom :accessor margin-side-bottom
-		      :initarg :margin-side-bottom
-		      :documentation  "CSS margin  bottom")
+		       :initarg :margin-side-bottom
+		       :documentation  "CSS margin  bottom")
    (margin-side-left :accessor margin-side-left
-		    :initarg :margin-side-left
-		    :documentation "CSS margin left")
+		     :initarg :margin-side-left
+		     :documentation "CSS margin left")
    (margin-side-right :accessor margin-side-right
-		     :initarg :margin-side-right
-		     :documentation "CSS margin right")
+		      :initarg :margin-side-right
+		      :documentation "CSS margin right")
    (margin-side-centerx :accessor margin-side-centerx
-		       :initarg :margin-side-centerx
-		       :documentation "CSS margin centerx")
+			:initarg :margin-side-centerx
+			:documentation "CSS margin centerx")
    (margin-side-centery :accessor margin-side-centery
-		       :initarg :margin-side-centery
-		       :documentation "CSS margin centery")
+			:initarg :margin-side-centery
+			:documentation "CSS margin centery")
    (hidden :accessor hidden
 	   :initarg :hidden
 	   :initform nil
@@ -165,9 +178,9 @@
 	  :initform nil
 	  :documentation "lets widget overlay over ober sibling widgets")
    (inline-render :accessor inline-render
-		 :initarg :inline-render
-		 :initform nil
-		 :documentation "Widget is displayed inline or as block")
+		  :initarg :inline-render
+		  :initform nil
+		  :documentation "Widget is displayed inline or as block")
    (decoration-style :accessor decoration-style
 		     :initarg :decoration-style
 		     :initform (make-instance 'WCSSDECORATIONSTYLE)
@@ -191,12 +204,20 @@
 	    :initarg :clicked
 	    :initform nil
 	    :documentation "Handle event of widget clicked")))   
-   
-   ;;(defmethod resize
-   ;;(defmethod position-at
-   ;;(defmethod set-all-margins
-   ;;(defmethod is-visible
-   ;;(defmethod add-style-class
+
+(defmethod add-child ((obj WWIDGET) (child WWIDGET))
+  (setf (parent child) obj)
+  (setf (children obj) (reverse (cons child (reverse (children obj))))))
+
+(defmethod remove-child ((obj WWIDGET) (child WWIDGET))
+  (setf (parent child) nil)
+  (setf (children obj) (remove child (children obj))))
+
+;;(defmethod resize
+;;(defmethod position-at
+;;(defmethod set-all-margins
+;;(defmethod is-visible
+;;(defmethod add-style-class
 ;;(defmethod remove-style-class
 
 (defmethod refresh ((widget WWIDGET))

@@ -1,6 +1,6 @@
 (in-package :cl-wt)
 
-(defclass WAPPLICATION (WOBJECT)
+(defclass WAPPLICATION (WWIDGET)
   ((app-root :accessor app-root
 	:initarg :root
 	:documentation "Top level widget container for this application")

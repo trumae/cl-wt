@@ -29,7 +29,6 @@
 			((:file "package")
 			 (:file "utils")
 			 (:file "WString")
-			 (:file "WObject")
 			 (:file "WApplication")
 			 (:file "WWidget")
 			 (:file "WContainerWidget")
