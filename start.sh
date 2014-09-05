@@ -8,7 +8,7 @@ ${LISP} <<EOF
 (pushnew #p"/home/trumae/lisp/cl-wt/" asdf:*central-registry*)
 (ql:quickload :cl-wt)
 (in-package :cl-wt)
-(start-helloworld 8000)
+(start-helloworld-jqm 8000)
 (loop (cl:sleep 1))
 EOF
 

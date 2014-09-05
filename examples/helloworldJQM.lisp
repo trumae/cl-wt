@@ -1,11 +1,11 @@
 (in-package :cl-wt)
 
-(defvar *app-helloworld* nil)
+(defvar *app-helloworldJQM* nil)
 
-(defclass app-helloworld (WAPPLICATION)
-  ((title :initform "Hello World!")))
+(defclass app-helloworldJQM (WAPPLICATIONJQM)
+  ((title :initform "Hello World JQM!")))
 
-(defmethod init-wapplication ((wapp app-helloworld))
+(defmethod init-wapplication ((wapp app-helloworldjqm))
   (let ((r1 (make-instance 'WCONTAINERWIDGET))
 	(btn1 (make-instance 'WPUSHBUTTON :text "Push me!" :clicked (lambda()(format t "clicked"))))
 	(input1 (make-instance 'WINPUTLINE))
@@ -24,16 +24,16 @@
        (hunchentoot:create-regex-dispatcher "^/$" 'adapter-hunchentoot)
        (hunchentoot:create-regex-dispatcher "^/logout$" 'adapter-hunchentoot-logout)))
 
-(defun start-helloworld(port)
+(defun start-helloworld-jqm(port)
   (if (null *app-helloworld*)
       (progn
-	(setf *app-type* 'app-helloworld)
-	(setf *app-helloworld*
+	(setf *app-type* 'app-helloworldjqm)
+	(setf *app-helloworldjqm*
 	      (hunchentoot:start (make-instance 'hunchentoot:easy-acceptor
 						:port port
 						:address "0.0.0.0"))))
       (format t "Server is running...")))
 
-(defun stop-helloworld()
+(defun stop-helloworld-jqm()
   (hunchentoot:stop *app-helloworld*)
   (setf *app-helloworld* nil))

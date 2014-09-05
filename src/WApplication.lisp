@@ -60,6 +60,12 @@
 (defmethod process-event ((app WAPPLICATION) origin event)
   (process-event (app-root app) origin event))
 
+(defmethod script-imports ((app WAPPLICATION))
+  "")
+
+(defmethod style-imports ((app WAPPLICATION))
+  "")
+
 (defmethod render ((app WAPPLICATION))
   (let ((uuid (uuid:make-v4-uuid)))
     (concatenate 'string
@@ -69,6 +75,8 @@
 		 "<meta charset='utf-8'>"
 		 "<meta name='viewport' content='width=device-width, initial-scale=1'>"
 		 "<title>" (title app)  "</title>"
+		 (style-imports app)
+		 (script-imports app)
 		 "</head><body>"
 		 (render (app-root app))
 

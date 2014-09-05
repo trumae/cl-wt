@@ -35,10 +35,14 @@
 			 (:file "WText")
 			 (:file "WPushButton")
 			 (:file "WInputLine")
-			 (:file "AdapterHunchentoot")))
+			 (:file "AdapterHunchentoot")			 
+			 (:module "jqm"
+				  :components
+				  ((:file "WApplicationJQM")))))
 	       (:module "examples"
 			:components
-			((:file "helloworld"))))
+			((:file "helloworld")
+			 (:file "helloworldJQM"))))
   :description "Web app library inspired in C++ library Wt"
   :long-description
   #.(with-open-file (stream (merge-pathnames
