@@ -17,7 +17,7 @@
 
 (defmethod add-child ((obj WOBJECT) (child WOBJECT))
   (setf (parent child) obj)
-  (setf (children obj) (pushnew child (children obj))))
+  (setf (children obj) (reverse (cons child (reverse (children obj))))))
 
 (defmethod remove-child ((obj WOBJECT) (child WOBJECT))
   (setf (parent child) nil)
