@@ -8,7 +8,19 @@
    (data-display :accessor data-display
 		 :initarg :data-display
 		 :initform "overlay"
-		 :documentation "Way for display the panel in the page - p.v. ('overlay','reveal','push')")))
+		 :documentation "Way for display the panel in the page - p.v. ('overlay','reveal','push')")
+   (data-icon :accessor data-icon
+	      :initarg :data-icon
+	      :initform "bars"
+	      :documentation "icon for button")
+   (data-iconpos :accessor data-iconpos
+		 :initarg :data-iconpos
+		 :initform "notext"
+		 :documentation "Position of icon")
+   (text-icon :accessor text-icon
+	      :initarg :text-icon
+	      :initform ""
+	      :documentation "Text for icon")))
 
 (defmethod render-begin ((widget WPANELJQM))
   (concatenate 'string
@@ -17,7 +29,7 @@
 	       "' data-position='"
 	       (data-position widget)
 	       "' data-display='"
-	       (data-position widget)
+	       (data-display widget)
 	       "'>"))
 
    
