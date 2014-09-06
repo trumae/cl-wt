@@ -5,6 +5,19 @@
 	  :initarg :title
 	  :initform nil
 	  :documentation "Title of page")
+   
+   (theme :accessor theme
+	  :initarg :theme
+	  :initform "a"
+	  :documentation "Predefined theme for app")
+   (right-panel :accessor right-panel
+		:initarg :right-panel
+		:initform nil
+		:documentation "Panel of right side")
+   (left-panel :accessor left-panel
+	       :initarg :left-panel
+	       :initform nil
+	       :documentation "Panel of left side")
    (header :accessor header
 	   :initarg :header
 	   :initform nil
@@ -22,6 +35,8 @@
   (concatenate 'string
   	       "<div data-role='page' id='"
 	       (write-to-string (id widget))
+	       "' data-theme='"
+	       (theme widget)
 	       "'>"))
 
 (defmethod render-body ((widget WPAGEJQM))
