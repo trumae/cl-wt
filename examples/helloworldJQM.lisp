@@ -9,7 +9,10 @@
   (let* ((rpanel (make-instance 'WPANELJQM))
 	 (lpanel (make-instance 'WPANELJQM :data-iconpos "" :text-icon "Login" :data-position "right"))
 	 (r1 (make-instance 'WPAGEJQM :title "HelloWorldJQM" :right-panel rpanel :left-panel lpanel))
-	 (btn1 (make-instance 'WPUSHBUTTON :text "Push me!"))
+	 (btn1 (make-instance 'WPUSHBUTTON :text "Push me!"
+			      ;:data-icon "ui-icon-arrow-d-l"
+					;:data-iconpos "ui-btn-icon-left"
+			      ))
 	 (input1 (make-instance 'WINPUTLINE))
 	 (t1 (make-instance 'WTEXT :text "Nome"))
 	 (t2 (make-instance 'WTEXT :text "")))

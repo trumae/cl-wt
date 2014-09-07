@@ -40,7 +40,8 @@
 				  :components
 				  ((:file "WApplicationJQM")
 				   (:file "WPageJQM")
-				   (:file "WPanelJQM")))))
+				   (:file "WPanelJQM")
+				   (:file "WPushButtonJQM")))))
 	       (:module "examples"
 			:components
 			((:file "helloworld")
