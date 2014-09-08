@@ -14,14 +14,27 @@
 					;:data-iconpos "ui-btn-icon-left"
 			      ))
 	 (input1 (make-instance 'WINPUTLINE))
+	 (lv (make-instance 'WLISTVIEWJQM :inset T :data-filter T
+			    :data-filter-placeholder "Busca..."))
 	 (t1 (make-instance 'WTEXT :text "Nome"))
-	 (t2 (make-instance 'WTEXT :text "")))
+	 (t2 (make-instance 'WTEXT :text ""))
+	 (item1 (make-instance 'WITEMLISTVIEWJQM :is-divider T))
+	 (item2 (make-instance 'WITEMLISTVIEWJQM :data-icon "gear" :count-bubbles 10))
+	 (textoitem1 (make-instance 'WTEXT :text "Titulo"))
+	 (textoitem2 (make-instance 'WANCHOR :href "http://www.google.com/" :text "Google")))
     (setf (clicked btn1) (lambda ()			   
 			   (setf (text t2) (format nil "Hello World ~a" (text input1)))))
     (add-widget r1 t1)
     (add-widget r1 input1)
     (add-widget r1 btn1)
     (add-widget r1 t2)
+    (add-widget r1 lv)
+
+    (add-widget item1 textoitem1)
+    (add-widget item2 textoitem2)
+    (add-widget lv item1)
+    (add-widget lv item2)
+    
     (setf (app-root wapp) r1)))
 
 (setq hunchentoot:*dispatch-table*

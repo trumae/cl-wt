@@ -35,6 +35,7 @@
 			 (:file "WText")
 			 (:file "WPushButton")
 			 (:file "WInputLine")
+			 (:file "WAnchor")
 			 (:file "AdapterHunchentoot")			 
 			 (:module "jqm"
 				  :components
