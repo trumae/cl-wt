@@ -43,6 +43,7 @@
 				   (:file "WPageJQM")
 				   (:file "WPanelJQM")
 				   (:file "WListViewJQM")
+                   (:file "WDatePickerJQM")
 				   (:file "WPushButtonJQM")))))
 	       (:module "examples"
 			:components

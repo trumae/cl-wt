@@ -14,6 +14,7 @@
 					;:data-iconpos "ui-btn-icon-left"
 			      ))
 	 (input1 (make-instance 'WINPUTLINE))
+	 (inputDate (make-instance 'WDATEPICKERJQM))
 	 (lv (make-instance 'WLISTVIEWJQM :inset T :data-filter T
 			    :data-filter-placeholder "Busca..."))
 	 (t1 (make-instance 'WTEXT :text "Nome"))
@@ -26,6 +27,7 @@
 			   (setf (text t2) (format nil "Hello World ~a" (text input1)))))
     (add-widget r1 t1)
     (add-widget r1 input1)
+    (add-widget r1 inputDate)
     (add-widget r1 btn1)
     (add-widget r1 t2)
     (add-widget r1 lv)
